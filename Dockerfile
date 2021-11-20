@@ -8,7 +8,7 @@ FROM golang:alpine
 LABEL maintainer="Brett Mostert <brettmostert@gmail.com>"
 LABEL app=trple
 
-RUN apk add --no-cache git bash
+RUN apk add --no-cache bash
 
 ENV TRPLE_DEV=true
 ENV TRPLE_RELEASE=1
