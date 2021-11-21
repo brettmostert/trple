@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Get the parent directory of where this script is.
+source $(dirname "$0")/common.sh
+getProjectDir
+
 # Set module download mode to readonly to not implicitly update go.mod
 export GOFLAGS="-mod=readonly"
 
@@ -7,13 +11,6 @@ export GOFLAGS="-mod=readonly"
 if [[ -n "${TRPLE_RELEASE}" ]]; then
     LD_FLAGS="-s -w"
 fi
-
-# Get the parent directory of where this script is.
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
-DIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
-
-cd "$DIR"
 
 # Create bin if it's doesn't exists
 if [ ! -d $DIR/bin ]; then
@@ -24,12 +21,12 @@ fi
 # Ensure all remote modules are downloaded and cached before build so that
 # gox is not used yet
 # the concurrent builds if used... launched by gox won't race to redundantly download them.
-echo "==> Installing remote modules..."
+echo -e "==> ${CYAN}Installing remote modules...${NC}"
 go mod download
 
 # Build!
-echo "==> Building..."
-go build -o $DIR/bin -ldflags "${LD_FLAGS}" ./...
+echo -e "==> ${CYAN}Building...${NC}"
+CGO_ENABLED=0 GOOS=linux go build -o $DIR/bin -ldflags "${LD_FLAGS}" ./...
 GOPATH=${GOPATH:-$(go env GOPATH)}
 MAIN_GOPATH=($GOPATH)
 
@@ -45,5 +42,6 @@ done
 
 # Done!
 echo
-echo "==> Results:"
+echo -e "==> ${YELLOW}Results:${NC}"
 ls -hl $DIR/bin
+echo

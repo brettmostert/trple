@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-# Get the parent directory of where this script is.
 source $(dirname "$0")/common.sh
 getProjectDir
 
 # Build a image with src code and debug
-docker build . --rm --force-rm --target dev -t trple:latest-dev
+docker build . --rm --force-rm --target release -t trple:latest --build-arg RELEASE=1
 
 # Done!
 echo
