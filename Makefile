@@ -7,10 +7,10 @@ static-code-analysis:
 build: sca
 	@sh -c "'$(CURDIR)/scripts/build.sh'"
 
-docker-build:
+docker-build: sca
 	@sh -c "'$(CURDIR)/scripts/docker-build.sh'"
 
-docker-build-release:
+docker-build-release: sca
 	@sh -c "'$(CURDIR)/scripts/docker-build-release.sh'"
 
 docker-clean-all:
@@ -19,6 +19,9 @@ docker-clean-all:
 docker-clean:
 	@sh -c "'$(CURDIR)/scripts/docker-clean.sh'"
 
+proto:
+	@sh -c "'$(CURDIR)/scripts/proto.sh'"
+
 .NOTPARALLEL:
 
-.PHONY: sca static-code-analysis build docker-build docker-clean-all docker-clean docker-build-release
+.PHONY: sca static-code-analysis build docker-build docker-clean-all docker-clean docker-build-release proto
