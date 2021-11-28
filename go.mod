@@ -3,15 +3,15 @@ module github.com/brettmostert/trple
 go 1.17
 
 require (
-	github.com/brettmostert/trple-proto-go v0.0.0-20211128185334-31c4870c015b
+	github.com/brettmostert/trple-proto-go v0.0.0-20211128195004-46daee39cb9f
 	google.golang.org/grpc v1.42.0
 )
 
 require (
-	github.com/golang/protobuf v1.4.3 // indirect
-	golang.org/x/net v0.0.0-20200822124328-c89045814202 // indirect
-	golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd // indirect
-	golang.org/x/text v0.3.0 // indirect
-	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
-	google.golang.org/protobuf v1.25.0 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
+	golang.org/x/net v0.0.0-20211123203042-d83791d6bcd9 // indirect
+	golang.org/x/sys v0.0.0-20211124211545-fe61309f8881 // indirect
+	golang.org/x/text v0.3.7 // indirect
+	google.golang.org/genproto v0.0.0-20211118181313-81c1377c94b1 // indirect
+	google.golang.org/protobuf v1.27.1 // indirect
 )
