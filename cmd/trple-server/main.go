@@ -1,24 +1,24 @@
 package main
 
 import (
-	"bufio"
 	"context"
 	"fmt"
 	"log"
 	"net"
-	"os"
 
-	productV1 "github.com/brettmostert/trple-proto-go/product/v1"
+	productV1 "github.com/brettmostert/trple-proto-go/trple/product/v1"
 	"google.golang.org/grpc"
 )
 
 func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func run() error {
 	fmt.Println("server is meant to do something")
 
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		fmt.Println(scanner.Text())
-	}
 	listenOn := "127.0.0.1:8080"
 	listener, err := net.Listen("tcp", listenOn)
 	if err != nil {
@@ -31,16 +31,14 @@ func main() {
 	if err := server.Serve(listener); err != nil {
 		return fmt.Errorf("failed to serve gRPC server: %w", err)
 	}
+
+	return nil
 }
 
 type productServiceServer struct {
 	productV1.UnimplementedProductServiceServer
 }
 
-func (s *productServiceServer) PutPet(ctx context.Context, req *productV1.FetchResponseRequest) (*productV1.FetchResponseResponse, error) {
-	name := req.GetName()
-	petType := req.GetPetType()
-	log.Println("Got a request to create a", petType, "named", name)
-
-	return &productV1.FetchResponseResponse{}, nil
+func (s *productServiceServer) GetProductById(ctx context.Context, req *productV1.GetProductByIdRequest) (*productV1.GetProductByIdResponse, error) {
+	return &productV1.GetProductByIdResponse{}, nil
 }

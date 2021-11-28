@@ -2,10 +2,12 @@ module github.com/brettmostert/trple
 
 go 1.17
 
-require google.golang.org/grpc v1.42.0
+require (
+	github.com/brettmostert/trple-proto-go v0.0.0-20211128185334-31c4870c015b
+	google.golang.org/grpc v1.42.0
+)
 
 require (
-	github.com/brettmostert/trple-proto-go v0.0.0-20211127180156-d0caa9681a4e // indirect
 	github.com/golang/protobuf v1.4.3 // indirect
 	golang.org/x/net v0.0.0-20200822124328-c89045814202 // indirect
 	golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd // indirect
