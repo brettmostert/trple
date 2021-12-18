@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	productV1 "github.com/brettmostert/trple-proto-go/trple/product/v1"
+	productV1 "github.com/brettmostert/trple-proto-product-go/trple/product/v1"
 	"google.golang.org/grpc"
 )
 
@@ -29,7 +29,7 @@ func run() error {
 	if err != nil {
 		return fmt.Errorf("failed to PutPet: %w", err)
 	}
-	response.GetResult()
+	// response.GetResult()
 	log.Println("Successfully PutPet", response)
 	return nil
 }

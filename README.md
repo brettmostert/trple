@@ -37,6 +37,7 @@ https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
 https://github.com/namely/chief-of-state
 https://github.com/namely/chief-of-state-protos
 https://github.com/namely/docker-protoc
+https://golangbyexample.com/package-vs-module-golang/
 
 ## BootStrap
 
@@ -55,3 +56,13 @@ A Big Shout Out! To the people who worked on the following, the work you have do
 - https://github.com/hashicorp/terraform
 - https://github.com/kubernetes/kubernetes/
 
+install buf (linting and breaking changes)
+go generators
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+install protoc
+
+
+PB_REL="https://github.com/protocolbuffers/protobuf/releases"
+curl -LO $PB_REL/download/v3.19.1/protoc-3.19.1-linux-x86_64.zip
+7z x -y -o/home/$USER/.local/protoc ./protoc-3.19.1-linux-x86_64.zip
